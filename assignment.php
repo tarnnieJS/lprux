@@ -160,8 +160,7 @@
 <div class="container-fluid">
 <div class="row">
 <div class="col-sm-2">
-
-    <div id="wrapper">
+<div id="wrapper">
 
 <div id="sidebar-wrapper">
     <ul class="sidebar-nav">
@@ -208,6 +207,7 @@
         ?>
   <div class="col-sm-1"></div>
 <div class="col-sm-9"><br><br>
+<span id="result"></span>
   <?php  
  $connect = mysqli_connect("localhost", "root", "", "lprux");  
  $output = '';  
@@ -226,7 +226,7 @@
                      <th width="20%">รหัสนักศึกษา</th>
                      <th width="20%">ชือนักศึกษา</th>
                      <th width="10%">ผู้สอน</th> 
-                     <th width="5%">สถานะ</th>                      
+                     <th width="5%">สถานะการส่ง</th>                      
                      <th width="5%">กำหนดส่ง</th>
                      <th width="5%"></th>  
 
@@ -391,23 +391,27 @@
         })  
     });  
     
-	function edit_data(id, text, column_name)  
-    {  
+  function edit_data(id, text, column_name)
+    { 
+      
+      // console.log(id)
+      // console.log(text)
+      // console.log(column_name)
+
         $.ajax({  
             url:"edit.php",  
             method:"POST",  
             data:{id:id, text:text, column_name:column_name},  
             dataType:"text",  
             success:function(data){  
-        //alert(data);
 				$('#result').html("<div class='alert alert-success'>"+data+"</div>");
             }  
         });  
-    }  
-    $(document).on('blur', '.first_name', function(){  
+    } 
+    $(document).on('blur', '.subj_id', function(){  
         var id = $(this).data("id1");  
-        var first_name = $(this).text();  
-        edit_data(id, first_name, "first_name");  
+        var subj_id = $(this).text();  
+        edit_data(id, subj_id, "subj_id");  
     });  
     $(document).on('blur', '.last_name', function(){  
         var id = $(this).data("id2");  
