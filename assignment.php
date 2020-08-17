@@ -231,7 +231,7 @@
                      <th width="5%"></th>  
 
                 </tr>';  
- $rows = mysqli_num_rows($result);
+ $rows = mysqli_num_rows($result); 
  if($rows > 0)  
  {  
 	  if($rows > 10)
